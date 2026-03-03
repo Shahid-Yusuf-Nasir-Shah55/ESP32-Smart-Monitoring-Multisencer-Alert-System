@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 95.82, "left": 138.97, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 396.3, "left": -41, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -83.4, "left": 37.5, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": 280.68,
+      "left": -81.9,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 299.1,
+      "left": -301.7,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "imu1",
+      "top": 128.62,
+      "left": -189.68,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": 22.4, "left": -220, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 96.63,
+      "left": -88.54,
+      "rotate": 90,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 187.5,
+      "left": -79.5,
+      "rotate": 270,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": -126.4,
+      "left": 128.2,
+      "rotate": 270,
+      "attrs": { "type": "50kg" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 141.8,
+      "left": 48,
+      "attrs": { "color": "green", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "cell1:VCC", "esp:3V3.1", "red", [ "v9.6", "h-115.2", "v57.6" ] ],
+    [ "cell1:SCK", "esp:7", "white", [ "v28.8", "h-96.8", "v96" ] ],
+    [ "cell1:DT", "esp:6", "green", [ "v19.2", "h-77.3", "v96" ] ],
+    [ "cell1:GND", "esp:GND.2", "black", [ "v19.2", "h47.7" ] ],
+    [ "btn1:1.r", "esp:4", "cyan", [ "v0" ] ],
+    [ "btn1:2.l", "esp:GND.1", "green", [ "h-9.6", "v163.6" ] ],
+    [ "oled1:VCC", "esp:3V3.2", "red", [ "h0" ] ],
+    [ "oled1:GND", "esp:GND.2", "black", [ "h57.6", "v-48", "h182.4" ] ],
+    [ "oled1:SDA", "esp:8", "purple", [ "h19.2", "v67.27" ] ],
+    [ "oled1:SCL", "esp:9", "yellow", [ "h28.8", "v105.9" ] ],
+    [ "pir1:VCC", "esp:5V", "red", [ "h28.8", "v-9.6" ] ],
+    [ "pir1:GND", "esp:GND.1", "black", [ "h19.2", "v19.46" ] ],
+    [ "pir1:OUT", "esp:3", "cyan", [ "h19.2", "v-9.46" ] ],
+    [ "bz1:1", "esp:GND.1", "green", [ "h53.1", "v89.1" ] ],
+    [ "bz1:2", "esp:5", "green", [ "h91.5", "v-54.5" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v45.3", "h149.1" ] ],
+    [ "dht1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:10", "green", [ "v16.5", "h-14", "v172.8", "h9.6", "v48" ] ],
+    [ "gas1:VCC", "esp:5V", "red", [ "h28.8", "v-116.1" ] ],
+    [ "gas1:GND", "esp:GND.1", "black", [ "h19.2", "v-96.8" ] ],
+    [ "gas1:AOUT", "esp:2", "green", [ "h211.2", "v-67.2" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "h15.6", "v24.2", "h249.6", "v-67.2" ] ],
+    [ "ultrasonic1:TRIG", "esp:11", "green", [ "h63.6", "v-81" ] ],
+    [ "ultrasonic1:ECHO", "esp:12", "green", [ "h25.2", "v34.6", "h230.4", "v-86.4" ] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "h82.8", "v131", "h220.8", "v-134.4" ] ],
+    [ "ldr1:VCC", "esp:3V3.1", "red", [ "h134.4", "v9.6" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "h144", "v28.4", "h76.8" ] ],
+    [ "imu1:VCC", "esp:3V3.1", "red", [ "h27.96", "v9.08", "h182.4", "v-76.8" ] ],
+    [ "imu1:GND", "esp:GND.2", "black", [ "h37.56", "v-67.72", "v-28.8", "h316.8" ] ],
+    [ "imu1:SCL", "esp:9", "green", [ "h37.56", "v18.68", "h153.6", "v67.2" ] ],
+    [ "imu1:SDA", "esp:8", "green", [ "h27.96", "v37.88", "h172.8", "v28.8" ] ],
+    [ "imu1:AD0", "esp:GND.1", "black", [ "h27.96", "v325.78", "h230.4", "v-134.4" ] ],
+    [ "ldr1:AO", "esp:1", "white", [ "h288", "v85.7" ] ]
+  ],
+  "dependencies": {}
+}
